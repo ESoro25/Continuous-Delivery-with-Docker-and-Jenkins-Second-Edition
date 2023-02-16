@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 public class Calculator {
         final static int umlNUMBER1 = 3;
 	@Cacheable("sum")
+/**
+ * Function that takes two integer arguments and returns the sum
+*/
 	public int sum(int a, int b) {
 		return a + b;
 	}
