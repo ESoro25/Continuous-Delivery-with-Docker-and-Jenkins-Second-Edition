@@ -46,7 +46,7 @@ spec:
         }
     }
     post {
-        sucess {
+        success {
             steps {
                 publishHTML (target: [
                     reportDir: 'Chapter09/sample3/build/reports/tests/acceptanceTest',
