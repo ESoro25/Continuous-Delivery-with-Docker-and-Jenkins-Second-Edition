@@ -47,13 +47,11 @@ spec:
     }
     post {
         success {
-            steps {
                 publishHTML (target: [
                     reportDir: 'Chapter09/sample3/build/reports/tests/acceptanceTest',
                     reportFiles: 'index.html',
                     reportName: "Acceptance Report"
                     ])                       
-            }
         }
     }
 }
