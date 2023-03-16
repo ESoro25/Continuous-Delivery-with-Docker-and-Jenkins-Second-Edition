@@ -1,5 +1,22 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+        defaultContainer 'gradle'
+        yaml '''
+apiVersion: v1 
+kind: Pod 
+spec: 
+  containers: 
+  - name: gradle 
+    image: gradle:jdk8 
+    command: 
+    - sleep 
+    args: 
+    - 99d 
+  restartPolicy: Never 
+        '''
+        }
+    }
     stages {
         stage('Run Calculator') {
             steps {
@@ -17,12 +34,9 @@ pipeline {
         stage('Test Calculator') {
             steps {
                 sh '''
-                echo 'Pass Example'
-                test $(curl calculator-service:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || echo 'fail'
-                echo 'Fail Example'
-                test $(curl calculator-service:8080/div?a=6\\&b=3) -eq 3 && echo 'pass' || echo 'fail'
-                echo 'Div by 0 Fail Example'
-                test $(curl calculator-service:8080/div?a=6\\&b=0) -eq 3 && echo 'pass' || echo 'fail'
+                cd ../../Chapter09/sample3
+                chmod +x gradlew
+                ./gradlew acceptanceTest -Dcalculator.url=http://calculator-service:8080
                 '''
             }
         }
