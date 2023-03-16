@@ -44,5 +44,16 @@ spec:
                 }
             }
         }
+        post {
+            sucess {
+                steps {
+                    publishHTML (target: [
+                        reportDir: 'Chapter09/sample3/build/reports/tests/test',
+                        reportFiles: 'index.html',
+                        reportName: "Acceptance Report"
+                        ])                       
+                }
+            }
+        }
     }
 }
