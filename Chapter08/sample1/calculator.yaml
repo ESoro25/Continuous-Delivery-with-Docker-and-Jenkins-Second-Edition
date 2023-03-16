@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: calculator
-        image: dlambrig/week8:1.1
+        image: esoro25/calculator-div:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
