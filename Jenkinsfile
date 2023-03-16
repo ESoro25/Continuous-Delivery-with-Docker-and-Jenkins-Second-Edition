@@ -47,6 +47,7 @@ spec:
                 sh '''
                 echo 'Building Gradle...'
                 cd Chapter09/sample3
+                chmod +x gradlew
                 ./gradlew build
                 cp ./build/libs/calculator-0.0.1-SNAPSHOT.jar /mnt
                 '''
